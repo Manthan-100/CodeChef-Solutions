@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int t;
+    unsigned long long m = 1000000007;
+    cin >> t;
+    while (t--) {
+        long int n;
+        cin >> n;
+        vector <unsigned long long> prices;
+        for (int i = 0; i < n; ++i) {
+            unsigned long long temp;
+            cin >> temp;
+            prices.push_back(temp);
+        }
+        sort(prices.begin(), prices.end(), greater<int>());;
+        signed long long diff = 0, profit = 0;
+        for (int i = 0; i < n; ++i) {
+            diff = prices[i] - i;
+            if (diff > 0)
+                profit += diff;
+        }
+        cout << profit % m << endl;
+    }
+    return 0;
+}
